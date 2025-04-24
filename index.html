@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Programación Unificada</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #002244;
+      color: white;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .tab-btn {
+      background-color: white;
+      color: black;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    .tab-btn.active {
+      background-color: #0066cc;
+      color: white;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    .grid {
+      display: grid;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .grid.programacion1 {
+      grid-template-columns: 1fr auto;
+    }
+
+    .grid.programacion2 {
+      grid-template-columns: 1fr auto auto;
+    }
+
+    .grid.programacion34 {
+      grid-template-columns: 1.2fr 1fr 0.8fr 1fr 1fr;
+      margin-bottom: 30px;
+    }
+
+    .header {
+      font-weight: bold;
+      background-color: #003366;
+      padding: 10px 0;
+    }
+
+    .cell {
+      background-color: #004080;
+      padding: 8px;
+      border-radius: 5px;
+      text-align: center;
+    }
+
+    .row:hover .cell {
+      background-color: #005599;
+    }
+
+    label {
+      margin-right: 10px;
+    }
+
+    /* Estilo para inputs y selects */
+    input, select {
+      width: 100%;  /* Ajustar al 100% del contenedor */
+      padding: 5px;  /* Mismo relleno */
+      text-align: right;
+      font-size: 14px; /* Asegura que el texto sea legible */
+      border-radius: 5px; /* Bordes redondeados */
+      box-sizing: border-box; /* Asegura que el padding no afecte el tamaño total */
+    }
+
+    .unit {
+      margin-left: 5px;
+      font-size: 0.9em;
+      color: #ccc;
+      white-space: nowrap;
+    }
+
+    /* Estilo especial para el select */
+    select {
+      background-color: #0066cc; /* Fondo azul */
+      color: white; /* Texto blanco */
+      border: 1px solid #003366; /* Borde oscuro */
+    }
+
+    .buttons {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .btn {
+      background-color: white;
+      color: black;
+      padding: 10px;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    /* Media query para pantallas pequeñas */
+    @media (max-width: 600px) {
+      .grid.programacion1,
+      .grid.programacion2,
+      .grid.programacion34 {
+        grid-template-columns: 1fr; /* Hacer que los elementos se alineen en una sola columna */
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="tabs">
+      <button class="tab-btn active" onclick="openTab('tab1')">Programación 1</button>
+      <button class="tab-btn" onclick="openTab('tab2')">Programación 2</button>
+      <button class="tab-btn" onclick="openTab('tab3')">Programación 3</button>
+      <button class="tab-btn" onclick="openTab('tab4')">Programación 4</button>
+    </div>
+
+    <!-- Programación 1 -->
+    <div id="tab1" class="tab-content active">
+      <h2>Programación 1</h2>
+      <div class="grid programacion1">
+        <label>Producto No</label><input type="text" value="4" readonly>
+        <label>Longitud de Sello V</label><input type="text" value="410" readonly>
+        <label>Nombre del Producto</label>
+        <select>
+          <option value="1000gr" selected>1000gr</option>
+          <option value="3000gr">3000gr</option>
+          <option value="500gr">500gr</option>
+        </select>
+        <label>Longitud de Bolsas</label><input type="text" value="410" readonly>
+        <label>Velocidad de Embalaje</label><div class="form-group"><input type="text" value="35" readonly><span class="unit">b/min</span></div>
+        <label>Mácula</label><div class="form-group"><input type="text" value="10" readonly><span class="unit">mm</span></div>
+        <label>Secuencia de Bolsas</label><div class="form-group"><input type="text" value="1" readonly><span class="unit">pcs</span></div>
+        <label>Mark Pull Longitud Real</label><div class="form-group"><input type="text" value="318" readonly><span class="unit">mm</span></div>
+        <label>Retardo del Paquete</label><div class="form-group"><input type="text" value="0.80" readonly><span class="unit">S</span></div>
+        <label>Solicitar Retardo Material</label><div class="form-group"><input type="text" value="0.10" readonly><span class="unit">S</span></div>
+        <label>No Descargas</label><input type="text" value="1" readonly>
+      </div>
+    </div>
+
+    <!-- Programación 2 -->
+    <div id="tab2" class="tab-content">
+      <h2>Programación 2</h2>
+      <div class="grid programacion2">
+        <label>Retraso de película para tirar</label><input type="text" value="0.05" readonly><span>S</span>
+        <label>Cerar sello V</label><input type="text" value="0.20" readonly><span>S</span>
+        <label>Retraso en sello H</label><input type="text" value="0.35" readonly><span>S</span>
+        <label>Extremo final se cierra</label><input type="text" value="1.00" readonly><span>S</span>
+        <label>Retraso de la herramienta</label><input type="text" value="0.50" readonly><span>S</span>
+        <label>Cortando</label><input type="text" value="0.50" readonly><span>S</span>
+        <label>Retraso de Codificación</label><input type="text" value="0.50" readonly><span>S</span>
+        <label>Imprimiendo</label><input type="text" value="0.20" readonly><span>S</span>
+        <label>Velocidad de la película</label><input type="text" value="18000" readonly><span>Hz</span>
+        <label>Aceleración de la película</label><input type="text" value="0.050" readonly><span>S</span>
+        <label>Película desacelerar</label><input type="text" value="0.100" readonly><span>S</span>
+        <label>Película para tirar tiempo</label><input type="text" value="0.54" readonly><span>S</span>
+        <label>Ninguna alarma de la película retrasa</label><input type="text" value="1.30" readonly><span>S</span>
+      </div>
+    </div>
+
+    <!-- Programación 3 -->
+    <div id="tab3" class="tab-content">
+      <h2>Programación 3</h2>
+      <div class="grid programacion34 header">
+        <div>Puerto libre</div>
+        <div>Función</div>
+        <div>Estado</div>
+        <div>Retraso (s)</div>
+        <div>Tiempo (s)</div>
+      </div>
+      <div class="grid programacion34 row">
+        <div class="cell">Y2</div>
+        <div class="cell">Sold. PE</div>
+        <div class="cell">ON</div>
+        <div class="cell">0.60</div>
+        <div class="cell">0.80</div>
+      </div>
+      <div class="grid programacion34 row">
+        <div class="cell">Y3</div>
+        <div class="cell">Apoyo</div>
+        <div class="cell">OFF</div>
+        <div class="cell">0.60</div>
+        <div class="cell">0.30</div>
+      </div>
+      <div class="grid programacion34 row">
+        <div class="cell">Y4</div>
+        <div class="cell">Alimentación</div>
+        <div class="cell">OFF</div>
+        <div class="cell">0.10</div>
+        <div class="cell">0.70</div>
+      </div>
+      <div class="grid programacion34 row">
+        <div class="cell">Y5</div>
+        <div class="cell">Soplar Sellado V</div>
+        <div class="cell">ON</div>
+        <div class="cell">0.95</div>
+        <div class="cell">0.15</div>
+      </div>
+    </div>
+
+    <!-- Programación 4 -->
+    <div id="tab4" class="tab-content">
+      <h2>Programación 4</h2>
+      <div class="grid programacion34 header">
+        <div>Puerto libre</div>
+        <div>Función</div>
+        <div>Estado</div>
+        <div>Retraso (s)</div>
+        <div>Tiempo (s)</div>
+      </div>
+      <div class="grid programacion34 row">
+        <div class="cell">Y10</div>
+        <div class="cell">Soporte Tolva</div>
+        <div class="cell">ON</div>
+        <div class="cell">1.20</div>
+        <div class="cell">0.15</div>
+      </div>
+      <div class="grid programacion34 row">
+        <div class="cell">Y11</div>
+        <div class="cell">Sin señal</div>
+        <div class="cell">OFF</div>
+        <div class="cell">0.00</div>
+        <div class="cell">0.00</div>
+      </div>
+      <div class="grid programacion34 row">
+        <div class="cell">Y12</div>
+        <div class="cell">Sin señal</div>
+        <div class="cell">OFF</div>
+        <div class="cell">0.00</div>
+        <div class="cell">0.00</div>
+      </div>
+    </div>
+
+    <!-- Control Buttons -->
+    <div class="buttons">
+      <button class="btn">⏹️</button>
+      <button class="btn">⬆️</button>
+      <button class="btn">⬇️</button>
+      <button class="btn">↩️</button>
+    </div>
+  </div>
+
+  <script>
+    function openTab(tabId) {
+      const tabs = document.querySelectorAll('.tab-content');
+      const buttons = document.querySelectorAll('.tab-btn');
+      
+      tabs.forEach(tab => tab.classList.remove('active'));
+      buttons.forEach(btn => btn.classList.remove('active'));
+
+      document.getElementById(tabId).classList.add('active');
+      event.target.classList.add('active');
+    }
+  </script>
+</body>
+</html>
+
